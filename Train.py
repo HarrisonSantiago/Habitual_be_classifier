@@ -2,7 +2,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.linear_model import SGDClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.ensemble import VotingClassifier
-from habitual_be_classifier import augmenter
+from habitual_be_classifier.Augmenter import augmenter
 
 
 def algo_trainers(X_tr_counts, y_tr_counts):
