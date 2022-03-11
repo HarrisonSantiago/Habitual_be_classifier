@@ -7,7 +7,8 @@ setuptools.setup(
     author_email="harrisonsantiago4@gmail.com",
     description="Disambiguating habitual from non-habitual be",
     url="https://github.com/HarrisonSantiago/Habitual_be_classifier",
-    packages=setuptools.find_packages(),
+    #packages=setuptools.find_packages(),
+    packages = ['Habitual_be_classifier'],
     install_requires=[
         'pandas',
         'numpy',
