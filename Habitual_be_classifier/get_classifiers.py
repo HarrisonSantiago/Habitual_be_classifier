@@ -1,6 +1,6 @@
 import numpy as np
 from nltk import *
-from Train import *
+from Habitual_be_classifier.Train import *
 from sklearn.feature_extraction.text import CountVectorizer
 
 
