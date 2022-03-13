@@ -12,12 +12,12 @@ from nlpaug.util.file.download import DownloadUtil
 def findOccurrences(s, ch):
     return [i for i, letter in enumerate(s) if letter == ch]
 
-def augmenter(dataset):
-    if not os.path.exists('./glove.6B.100d.txt'):
+def augmenter(dataset, filepath = '.'):
+    if not os.path.exists(filepath + '/glove.6B.100d.txt'):
         DownloadUtil.download_glove(model_name='glove.6B', dest_dir='.') # Download GloVe model
-    if not os.path.exists('./GoogleNews-vectors-negative300.bin'):
+    if not os.path.exists(filepath + '/GoogleNews-vectors-negative300.bin'):
         DownloadUtil.download_word2vec(dest_dir='.') # Download word2vec model
-    if not os.path.exists('./wiki-news-300d-1M.vec'):
+    if not os.path.exists(filepath + '/wiki-news-300d-1M.vec'):
         DownloadUtil.download_fasttext(model_name='wiki-news-300d-1M', dest_dir='.') # Download fasttext model
 
 
@@ -45,17 +45,17 @@ def augmenter(dataset):
 
         elif method == 1:
             aug = naw.WordEmbsAug(
-                model_type='word2vec', model_path='./GoogleNews-vectors-negative300.bin',
+                model_type='word2vec', model_path=filepath + '/GoogleNews-vectors-negative300.bin',
                 action="substitute")
 
         elif method == 2:
             aug = naw.WordEmbsAug(
-                model_type='word2vec', model_path='./GoogleNews-vectors-negative300.bin',
+                model_type='word2vec', model_path=filepath + '/GoogleNews-vectors-negative300.bin',
                 action="insert")
 
         elif method == 3:
             aug = naw.WordEmbsAug(
-                model_type='word2vec', model_path='./GoogleNews-vectors-negative300.bin',
+                model_type='word2vec', model_path=filepath + '/GoogleNews-vectors-negative300.bin',
                 action="substitute")
 
         aug_row_before = aug.augment(row_before)
