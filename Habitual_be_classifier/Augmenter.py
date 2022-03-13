@@ -14,11 +14,11 @@ def findOccurrences(s, ch):
 
 def augmenter(dataset, filepath = '.'):
     if not os.path.exists(filepath + '/glove.6B.100d.txt'):
-        DownloadUtil.download_glove(model_name='glove.6B', dest_dir='.') # Download GloVe model
+        DownloadUtil.download_glove(model_name='glove.6B', dest_dir=filepath ) # Download GloVe model
     if not os.path.exists(filepath + '/GoogleNews-vectors-negative300.bin'):
-        DownloadUtil.download_word2vec(dest_dir='.') # Download word2vec model
+        DownloadUtil.download_word2vec(dest_dir=filepath) # Download word2vec model
     if not os.path.exists(filepath + '/wiki-news-300d-1M.vec'):
-        DownloadUtil.download_fasttext(model_name='wiki-news-300d-1M', dest_dir='.') # Download fasttext model
+        DownloadUtil.download_fasttext(model_name='wiki-news-300d-1M', dest_dir=filepath) # Download fasttext model
 
 
     hab_filter = dataset[:,2].astype(np.int) == 1
