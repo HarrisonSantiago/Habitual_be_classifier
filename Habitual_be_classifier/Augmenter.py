@@ -3,6 +3,7 @@ import numpy as np
 import nlpaug.augmenter.word as naw
 import os.path
 from nlpaug.util.file.download import DownloadUtil
+import zipfile
 
 
 #DownloadUtil.download_word2vec(dest_dir='.') # Download word2vec model
@@ -17,6 +18,8 @@ def augmenter(dataset, filepath = '.'):
         DownloadUtil.download_glove(model_name='glove.6B', dest_dir=filepath ) # Download GloVe model
     if not os.path.exists(filepath + '/GoogleNews-vectors-negative300.bin'):
         DownloadUtil.download_word2vec(dest_dir=filepath) # Download word2vec model
+        with zipfile.ZipFile(filepath + '/GoogleNews-vectors-negative300.zip', 'r') as zip_ref:
+            zip_ref.extractall(filepath)
     if not os.path.exists(filepath + '/wiki-news-300d-1M.vec'):
         DownloadUtil.download_fasttext(model_name='wiki-news-300d-1M', dest_dir=filepath) # Download fasttext model
 
