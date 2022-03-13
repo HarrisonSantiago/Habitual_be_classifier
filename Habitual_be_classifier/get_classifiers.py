@@ -1,10 +1,22 @@
 import numpy as np
 from nltk import *
-from Habitual_be_classifier.Train import *
+from Habitual_be_classifier.Train import algo_trainers
+from Habitual_be_classifier.Augmenter import augmenter
 from sklearn.feature_extraction.text import CountVectorizer
 
 
 def processer(dataset):
+
+    """
+    Takes in the the unknown habituality instances after rule-based filtering
+    and returns the input for the ML training
+
+    Parameters
+        - a dataset of [samples]
+    Returns
+        - and array of size [samples x features] where features are the available POS tags
+
+    """
 
     X = dataset[:,0]
 
@@ -47,25 +59,25 @@ def processer(dataset):
 
 def get_classifiers(unknown_hab):
 
+    """
+    Gets the array from processor and returns the trained ML models
+
+    Parameters
+        - unknown_hab from rule filter
+    Returns
+        - dictionary with the trained classifier models
+
+    """
 
     augmented = augmenter(unknown_hab)
 
-
     unknown_hab = np.concatenate((unknown_hab, augmented), axis = 0)
-
 
     y = unknown_hab[:,2].astype(np.int)
 
     X = processer(unknown_hab)
 
-    LR_model, SGD_model, MLP_model, ensemble_model = algo_trainers(X, y)
-
-    classifiers = {
-        'Logistic Regression' : LR_model,
-        'Linear SGD Classifier' : SGD_model,
-        'Neural Net' : MLP_model,
-        'Ensemble' : ensemble_model
-    }
+    classifiers = algo_trainers(X, y)
 
     return classifiers
 
