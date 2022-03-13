@@ -6,7 +6,17 @@ from sklearn.ensemble import VotingClassifier
 
 
 def algo_trainers(X_tr_counts, y_tr_counts):
+    """
+    Trains all of the ML models
 
+    Parameters
+        - X_tr_counts: Array of shape [samples x features]
+        - y_tr_counts: Array of shape [samples]
+
+    Returns
+        - All the trained ML algorithms
+
+    """
 
     # Creates the models for LR and SGD, then makes the predictions on the test sets
     LR_model = LogisticRegression(max_iter=3000, class_weight='auto')
@@ -23,5 +33,9 @@ def algo_trainers(X_tr_counts, y_tr_counts):
     cf3 = MLPClassifier(random_state=1, alpha=1e-5, solver='lbfgs', hidden_layer_sizes=(5, 2), max_iter=10000)
     ensemble_model = VotingClassifier(estimators=[('lr', cf), ('sgd', cf2), ('mlp', cf3)], voting='hard')
     ensemble_model.fit(X_tr_counts, y_tr_counts.ravel())
-
-    return LR_model, SGD_model, MLP_model, ensemble_model
+    ML_models = {'logistic regression' : LR_model,
+                'sgd' : SGD_model,
+                'mlp' : MLP_model,
+                'ensemble' : ensemble_model
+                 }
+    return ML_models
