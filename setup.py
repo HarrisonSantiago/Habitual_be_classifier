@@ -14,7 +14,6 @@ setuptools.setup(
         'numpy',
         'scipy',
         'nltk',
-        'wget',
         'sklearn',
         'nlpaug'
     ],
