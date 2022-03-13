@@ -1,7 +1,7 @@
 import random
 import numpy as np
 import nlpaug.augmenter.word as naw
-import os.path
+import os
 from nlpaug.util.file.download import DownloadUtil
 import gzip
 import shutil
@@ -19,7 +19,8 @@ def augmenter(dataset, filepath = '.'):
         DownloadUtil.download_glove(model_name='glove.6B', dest_dir=filepath ) # Download GloVe model
     if not os.path.exists(filepath + '/GoogleNews-vectors-negative300.bin'):
         DownloadUtil.download_word2vec(dest_dir=filepath) # Download word2vec model
-        with gzip.open(filepath + '/GoogleNews-vectors-negative300.zip', 'rb') as f_in:
+        os.rename(filepath + '/GoogleNews-vectors-negative300.zip, filepath + '/GoogleNews-vectors-negative300.gzip)
+        with gzip.open(filepath + '/GoogleNews-vectors-negative300.gzip', 'rb') as f_in:
             with open(filepath + '/GoogleNews-vectors-negative300.bin', 'wb') as f_out:
                 shutil.copyfileobj(f_in, f_out)
     if not os.path.exists(filepath + '/wiki-news-300d-1M.vec'):
