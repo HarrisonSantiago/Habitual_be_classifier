@@ -20,7 +20,7 @@ def rule_filter(dataset):
     for row in dataset:
 
         tokenizer = nltk.RegexpTokenizer(r"\w+")
-        tokenized = nltk.tokenizer.tokenize(row[0])
+        tokenized = tokenizer.tokenize(row[0])
         token_list = nltk.pos_tag(tokenized)
 
         i = row[1].astype(np.int)
