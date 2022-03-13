@@ -14,6 +14,7 @@ def rule_filter(dataset):
         - Array of "be" instances which could not be classified as non-hab
     """
 
+    nltk.download('averaged_perceptron_tagger')
     declared_nonhab = []
     unknown = []
 
