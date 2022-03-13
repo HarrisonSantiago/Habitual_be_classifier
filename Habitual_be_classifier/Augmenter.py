@@ -19,10 +19,11 @@ def augmenter(dataset, filepath = '.'):
         DownloadUtil.download_glove(model_name='glove.6B', dest_dir=filepath ) # Download GloVe model
     if not os.path.exists(filepath + '/GoogleNews-vectors-negative300.bin'):
         DownloadUtil.download_word2vec(dest_dir=filepath) # Download word2vec model
-        os.rename(filepath + '/GoogleNews-vectors-negative300.zip', filepath + '/GoogleNews-vectors-negative300.gz')
-        with gzip.open(filepath + '/GoogleNews-vectors-negative300.gz', 'rb') as f_in:
-            with gzip.open(filepath + '/GoogleNews-vectors-negative300.bin', 'wb') as f_out:
-                shutil.copyfileobj(f_in, f_out)
+        src = filepath + '/GoogleNews-vectors-negative300.zip'
+        dst = filepath + '/GoogleNews-vectors-negative300.bin'
+        command = 'gunzip -c -S zip ' + src + ' > ' + dst
+        os.system(command)
+
     if not os.path.exists(filepath + '/wiki-news-300d-1M.vec'):
         DownloadUtil.download_fasttext(model_name='wiki-news-300d-1M', dest_dir=filepath) # Download fasttext model
 
