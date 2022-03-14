@@ -2,6 +2,7 @@ import random
 import numpy as np
 import nlpaug.augmenter.word as naw
 import os
+import nltk
 from nlpaug.util.file.download import DownloadUtil
 
 
