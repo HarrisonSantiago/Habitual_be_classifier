@@ -5,7 +5,7 @@ from Habitual_be_classifier.Augmenter import augmenter
 from sklearn.feature_extraction.text import CountVectorizer
 
 
-def processer(dataset):
+def vectorize(dataset):
 
     """
     Takes in the the unknown habituality instances after rule-based filtering
@@ -75,7 +75,7 @@ def get_classifiers(unknown_hab):
 
     y = unknown_hab[:,2].astype(np.int)
 
-    X = processer(unknown_hab)
+    X = vectorize(unknown_hab)
 
     classifiers = algo_trainers(X, y)
 
