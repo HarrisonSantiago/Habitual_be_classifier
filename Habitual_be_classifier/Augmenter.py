@@ -41,7 +41,7 @@ def augmenter(dataset, filepath = '.'):
 
     for i in range(times_to_aug):
         row_to_aug = random.randint(0, num_hab-1)
-        method = random.randint(0, 3)
+        method = random.randint(0, 2)
 
         row = hab_dataset[row_to_aug]
         index_of_be = row[1].astype(np.int)
@@ -62,10 +62,6 @@ def augmenter(dataset, filepath = '.'):
                 model_type='word2vec', model_path=filepath + '/GoogleNews-vectors-negative300.bin',
                 action="insert")
 
-        elif method == 3:
-            aug = naw.WordEmbsAug(
-                model_type='word2vec', model_path=filepath + '/GoogleNews-vectors-negative300.bin',
-                action="substitute")
 
         aug_row_before = aug.augment(row_before)
         aug_row_after = aug.augment(row_after)
