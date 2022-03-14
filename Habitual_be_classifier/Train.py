@@ -5,7 +5,7 @@ from sklearn.ensemble import VotingClassifier
 
 
 
-def algo_trainers(X_tr_counts, y_tr_counts):
+def train_models(X_tr_counts, y_tr_counts):
     """
     Trains all of the ML models
 
