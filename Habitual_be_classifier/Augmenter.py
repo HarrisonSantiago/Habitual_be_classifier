@@ -3,8 +3,7 @@ import numpy as np
 import nlpaug.augmenter.word as naw
 import os
 from nlpaug.util.file.download import DownloadUtil
-import gzip
-import shutil
+
 
 
 #DownloadUtil.download_word2vec(dest_dir='.') # Download word2vec model
@@ -15,6 +14,8 @@ def findOccurrences(s, ch):
     return [i for i, letter in enumerate(s) if letter == ch]
 
 def augmenter(dataset, filepath = '.'):
+    nltk.download('wordnet')
+
     if not os.path.exists(filepath + '/glove.6B.100d.txt'):
         DownloadUtil.download_glove(model_name='glove.6B', dest_dir=filepath ) # Download GloVe model
     if not os.path.exists(filepath + '/GoogleNews-vectors-negative300.bin'):
