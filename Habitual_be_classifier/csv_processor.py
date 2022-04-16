@@ -32,7 +32,7 @@ def csv_processor(filePath):
             #assert 48 in spaces or 49 in spaces, 'location of be not where expected'
 
             diff = np.absolute(np.array(be_indices) - 50)
-            be_index = diff.argmin()
+            be_index = be_indices[diff.argmin()]
             #be_index = spaces.index(48) if 48 in spaces else spaces.index(49)
 
             if len(spaces) - be_index > 5:
@@ -43,7 +43,7 @@ def csv_processor(filePath):
 
                 be_indices = findOccurrences(input_row, ' be ')
                 diff = np.absolute(np.array(be_indices) - 50)
-                be_index = diff.argmin()
+                be_index = be_indices[diff.argmin()]
 
                 word_index = input_row.count(' ', 0, be_index)
                 if hab == 1:
