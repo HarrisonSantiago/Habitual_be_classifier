@@ -42,6 +42,7 @@ def csv_processor(filePath):
                     input_row = input_row + " "
                 input_row = re.sub("[^\w\s']", "", input_row) # remove punctuation
                 input_row = input_row.replace(" be'", " be ")
+                input_row = input_row.replace("  ", " ")
                 hab = int(text.iloc[index, 0])
 
                 be_indices = findOccurrences(input_row, ' be ')
