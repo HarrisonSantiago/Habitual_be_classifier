@@ -29,7 +29,7 @@ def csv_processor(filePath):
 
             #assert 48 in spaces or 49 in spaces, 'location of be not where expected'
 
-            diff = np.absolute(be_indices - 50)
+            diff = np.absolute(np.array(be_indices) - 50)
             be_index = diff.argmin()
             #be_index = spaces.index(48) if 48 in spaces else spaces.index(49)
 
