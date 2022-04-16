@@ -1,6 +1,6 @@
 import numpy as np
 from nltk import *
-from Habitual_be_classifier.Train import algo_trainers
+from Habitual_be_classifier.Train import *
 from Habitual_be_classifier.Augmenter import augmenter
 from sklearn.feature_extraction.text import CountVectorizer
 
@@ -77,7 +77,7 @@ def get_classifiers(unknown_hab):
 
     X = vectorize(unknown_hab)
 
-    classifiers = algo_trainers(X, y)
+    classifiers = train_models(X, y)
 
     return classifiers
 
