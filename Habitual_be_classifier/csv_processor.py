@@ -35,7 +35,7 @@ def csv_processor(filePath):
             be_index = be_indices[diff.argmin()]
             #be_index = spaces.index(48) if 48 in spaces else spaces.index(49)
 
-            if len(spaces) - be_index > 5:
+            if be_index > 15:
                 input_row = " " + input_row + " "
                 input_row = re.sub("[^\w\s']", "", input_row) # remove punctuation
                 input_row = input_row.replace(" be'", " be ")
