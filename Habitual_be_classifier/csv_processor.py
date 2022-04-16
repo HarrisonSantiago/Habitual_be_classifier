@@ -36,7 +36,10 @@ def csv_processor(filePath):
             #be_index = spaces.index(48) if 48 in spaces else spaces.index(49)
 
             if be_index > 15:
-                input_row = " " + input_row + " "
+                if input_row[0] != ' ':
+                    input_row = " " + input_row
+                if input_row[-1] != ' ':
+                    input_row = input_row + " "
                 input_row = re.sub("[^\w\s']", "", input_row) # remove punctuation
                 input_row = input_row.replace(" be'", " be ")
                 hab = int(text.iloc[index, 0])
@@ -46,9 +49,9 @@ def csv_processor(filePath):
                 be_index = be_indices[diff.argmin()]
                 word_index = input_row.count(' ', 0, be_index+1)
                 if hab == 1:
-                    hab_lst.append([input_row, word_index+1, 1])
+                    hab_lst.append([input_row, word_index, 1])
                 if hab == 0:
-                    nonhab_lst.append([input_row, word_index+1, 0])
+                    nonhab_lst.append([input_row, word_index, 0])
 
 
 
