@@ -44,8 +44,7 @@ def csv_processor(filePath):
                 be_indices = findOccurrences(input_row, ' be ')
                 diff = np.absolute(np.array(be_indices) - 50)
                 be_index = be_indices[diff.argmin()]
-
-                word_index = input_row.count(' ', 0, be_index)
+                word_index = input_row.count(' ', 0, be_index+1)
                 if hab == 1:
                     hab_lst.append([input_row, word_index+1, 1])
                 if hab == 0:
