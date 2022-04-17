@@ -29,8 +29,8 @@ def augmenter(dataset, filepath = '.'):
         with ZipFile(filepath + '/GoogleNews-vectors-negative300.zip', 'r') as zipObj:
             zipObj.extractall()
 
-    if not os.path.exists(filepath + '/wiki-news-300d-1M.vec'):
-        DownloadUtil.download_fasttext(model_name='wiki-news-300d-1M', dest_dir=filepath) # Download fasttext model
+    #if not os.path.exists(filepath + '/wiki-news-300d-1M.vec'):
+    #    DownloadUtil.download_fasttext(model_name='wiki-news-300d-1M', dest_dir=filepath) # Download fasttext model
 
 
     hab_filter = dataset[:,2].astype(np.int) == 1
